@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn">
+
+    <Appenders>
+
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5p [%t] %c - %m%n" />
+        </Console>
+
+        <CloudWatchAppender name="CloudWatch"
+                            logGroup="your-cloudwatch-log-group-name"
+                            logStream="your-cloudwatch-log-stream-name"
+            <PatternLayout pattern="[%d{yyyy-MM-dd HH:mm:ss.SSS}] %-5p [%t] %c - %m%n" />
+        </CloudWatchAppender>
+
+    </Appenders>
+
+    <Loggers>
+        <Root level="warn">
+            <AppenderRef ref="Console" />
+            <AppenderRef ref="CloudWatch"/>
+        </Root>
+        <Logger name="com.kdgregory" level="debug" additivity="false">
+            <AppenderRef ref="Console" />
+            <AppenderRef ref="CloudWatch"/>
+        </Logger>
+    </Loggers>
+</Configuration>
