@@ -164,8 +164,7 @@ Key configurations in `log4j2.xml`:
     *   `name`: "CloudWatch"
     *   `logGroup`: `your-cloudwatch-log-group-name` (placeholder - **update this to your desired CloudWatch Log Group**)
     *   `logStream`: `your-cloudwatch-log-stream-name` (placeholder - **update this to your desired CloudWatch Log Stream**)
-    *   `clientRegion`: `ap-southeast-2` (the AWS region for your CloudWatch Logs)
-    *   `JsonLayout`: Configured to output logs in JSON format with additional properties.
+    *   `PatternLayout`: Configured to output logs with a specific pattern.
 *   **`Console` Appender**: Outputs logs to the console with a specified pattern.
 *   **Loggers**:
     *   `Root` logger: Set to `warn` level, sending messages to both `Console` and `CloudWatch` appenders.
@@ -184,12 +183,8 @@ Key configurations in `log4j2.xml`:
 
         <CloudWatchAppender name="CloudWatch"
                             logGroup="your-cloudwatch-log-group-name"
-                            logStream="your-cloudwatch-log-stream-name"
-                            clientRegion="ap-southeast-2">
-            <JsonLayout compact="true" eventEol="true" properties="true" stacktraceAsString="true">
-                <KeyValuePair key="service" value="CloudWatchAppenderDemo"/>
-                <KeyValuePair key="environment" value="dev"/>
-            </JsonLayout>
+                            logStream="your-cloudwatch-log-stream-name">
+            <PatternLayout pattern="[%d{yyyy-MM-dd HH:mm:ss.SSS}] %-5p [%t] %c - %m%n" />
         </CloudWatchAppender>
 
     </Appenders>
