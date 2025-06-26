@@ -213,18 +213,18 @@ The `run.bat` script is used to execute the compiled Java application. It sets A
 
 **How to change AWS Keys:**
 
-The AWS access key, secret key, and region are passed as Java system properties directly in the `java` command within `run.bat`.
+The AWS access key, secret key, and region are passed as Java system properties directly in the `java` command within `run.bat`. These properties are: `aws.accessKeyId`, `aws.secretKey`, and `aws.region`.
 
 To change the AWS credentials or region, you need to modify the `java` command line in `run.bat`:
 
-*   `YOUR_AWS_KEY`: Replace this with your AWS Access Key ID.
-*   `YOUR_AWS_SECRET`: Replace this with your AWS Secret Access Key.
-*   `ap-southeast-2`: Replace this with your desired AWS region (e.g., `us-east-1`, `eu-west-1`).
+*   `-Daws.accessKeyId=YOUR_AWS_ACCESS_KEY`: Replace `YOUR_AWS_ACCESS_KEY` with your AWS Access Key ID.
+*   `-Daws.secretKey=YOUR_AWS_SECRET_KEY`: Replace `YOUR_AWS_SECRET_KEY` with your AWS Secret Access Key.
+*   `-Daws.region=ap-southeast-2`: Replace `ap-southeast-2` with your desired AWS region (e.g., `us-east-1`, `eu-west-1`).
 
 ```batch
 @echo off
 echo Running the application...
-java -Dlog4j2.disable.jmx=true -Daws.accessKeyId=YOUR_AWS_KEY -Daws.secretKey=YOUR_AWS_SECRET -Daws.region=ap-southeast-2 -jar target/CloudWatchAppenderDemo-1.0-SNAPSHOT.jar
+java -Dlog4j2.disable.jmx=true -Daws.accessKeyId=YOUR_AWS_ACCESS_KEY -Daws.secretKey=YOUR_AWS_SECRET_KEY -Daws.region=ap-southeast-2 -jar target/CloudWatchAppenderDemo-1.0-SNAPSHOT.jar
 rem -Dlog4j.debug
 
 
